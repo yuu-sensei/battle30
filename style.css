@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
+  background: #1a1a2e;
+  color: #fff;
+  min-height: 100dvh;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 24px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* === 待機画面 === */
+.app-title {
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 48px;
+  letter-spacing: 4px;
+}
+
+.start-btn {
+  background: #E8384F;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 8px 30px rgba(232, 56, 79, 0.5);
+}
+
+.start-btn:active {
+  transform: scale(0.94);
+  box-shadow: 0 4px 15px rgba(232, 56, 79, 0.4);
+}
+
+/* === カウントダウン画面 === */
+.count-number {
+  font-size: 200px;
+  font-weight: 900;
+  line-height: 1;
+  transition: color 0.3s;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.count-number.last5 {
+  color: #E8384F;
+  animation: pulse 0.5s ease;
+  text-shadow: 0 0 60px rgba(232, 56, 79, 0.6);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.count-bar-wrap {
+  width: 80%;
+  max-width: 400px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  margin-top: 48px;
+  overflow: hidden;
+}
+
+.count-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #E8384F, #ff6b6b);
+  border-radius: 6px;
+  transition: width 1s linear;
+}
+
+/* === 終了画面 === */
+.done-text {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 48px;
+  animation: flash 0.4s ease infinite alternate;
+}
+
+@keyframes flash {
+  from { opacity: 1; }
+  to { opacity: 0.4; }
+}
