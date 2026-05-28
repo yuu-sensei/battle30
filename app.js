@@ -76,17 +76,26 @@
       // 終了
       if (remaining <= 0) {
         clearInterval(intervalId);
+
+        // BGM を即停止
         bgm.pause();
         bgm.currentTime = 0;
 
-        // 終了ゴング
-        endAudio.currentTime = 0;
-        endAudio.play().catch(() => {});
+        // 0 を表示
+        $("#count-number").textContent = "0";
+        $("#count-number").className = "count-number last5";
 
-        // TIME UP 画面
+        // 少し間を空けてから終了ゴングを確実に再生
+        setTimeout(() => {
+          endAudio.currentTime = 0;
+          endAudio.volume = 1.0;
+          endAudio.play().catch(() => {});
+        }, 200);
+
+        // TIME UP 画面はゴングが鳴ってから表示
         setTimeout(() => {
           showScreen("done-screen");
-        }, 300);
+        }, 2000);
       }
     }, 1000);
   }
